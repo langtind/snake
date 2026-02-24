@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <h1>Snake</h1>
+        <div class="stats">
+          <span>Score: <strong id="score">0</strong></span>
+          <span id="status">Running</span>
+        </div>
+      </header>
+
+      <section
+        id="board"
+        class="board"
+        aria-label="Snake game board"
+        role="grid"
+      ></section>
+
+      <div class="actions">
+        <button id="restart-btn" type="button">Restart</button>
+        <button id="pause-btn" type="button">Pause</button>
+      </div>
+
+      <section class="controls" aria-label="On-screen controls">
+        <button data-dir="up" type="button" aria-label="Move up">Up</button>
+        <div class="row">
+          <button data-dir="left" type="button" aria-label="Move left">Left</button>
+          <button data-dir="down" type="button" aria-label="Move down">Down</button>
+          <button data-dir="right" type="button" aria-label="Move right">Right</button>
+        </div>
+      </section>
+
+      <p class="hint">
+        Arrows/WASD. Space = pause. Banana +1/+1 skull, apple +2/+2 skulls, strawberry +3/+3 skulls.
+      </p>
+    </main>
+
+    <section id="death-overlay" class="death-overlay" aria-hidden="true">
+      <div class="death-flash"></div>
+      <div class="death-content">
+        <img
+          src="./assets/youre-dead.svg"
+          alt="You're dead"
+          class="death-image"
+        />
+        <button id="replay-btn" class="death-replay" type="button">Spill igjen</button>
+      </div>
+    </section>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

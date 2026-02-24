@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="you're dead">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3" />
+      <feColorMatrix type="saturate" values="0" />
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.1" />
+      </feComponentTransfer>
+    </filter>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#070707" />
+      <stop offset="1" stop-color="#151515" />
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#bg)" />
+  <rect width="960" height="540" filter="url(#grain)" />
+
+  <polygon
+    points="170,250 230,150 770,175 810,300 735,390 220,365"
+    fill="#f7f7f3"
+    stroke="#ddd"
+    stroke-width="4"
+  />
+
+  <text
+    x="485"
+    y="287"
+    text-anchor="middle"
+    fill="#1d1d1d"
+    font-size="84"
+    font-family="'Comic Sans MS', 'Marker Felt', cursive"
+    transform="rotate(-7 485 287)"
+  >
+    you're dead
+  </text>
+</svg>
