@@ -134,7 +134,23 @@ body.death-active {
 .actions {
   margin-top: 0.75rem;
   display: flex;
+  align-items: center;
   gap: 0.5rem;
+}
+
+.wall-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-left: auto;
+  color: var(--muted);
+}
+
+.wall-toggle input:checked + span {
+  color: var(--text);
+  font-weight: 600;
 }
 
 button {

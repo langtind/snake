@@ -130,6 +130,7 @@ export function createInitialState(options = {}) {
   const rows = options.rows ?? 20;
   const cols = options.cols ?? 20;
   const random = options.random ?? Math.random;
+  const wallMode = options.wallMode ?? "teleport";
   const centerX = Math.floor(cols / 2);
   const centerY = Math.floor(rows / 2);
 
@@ -152,6 +153,7 @@ export function createInitialState(options = {}) {
     isAlive: true,
     isPaused: false,
     won: false,
+    wallMode,
   };
 }
 
@@ -190,6 +192,15 @@ export function stepGame(state, random = Math.random) {
     x: head.x + state.direction.x,
     y: head.y + state.direction.y,
   };
+
+  const outOfBounds =
+    movedHead.x < 0 || movedHead.x >= state.cols ||
+    movedHead.y < 0 || movedHead.y >= state.rows;
+
+  if (outOfBounds && state.wallMode === "deadly") {
+    return { ...state, isAlive: false };
+  }
+
   const nextHead = {
     x: (movedHead.x + state.cols) % state.cols,
     y: (movedHead.y + state.rows) % state.rows,

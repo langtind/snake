@@ -18,6 +18,7 @@ const pauseBtn = document.querySelector("#pause-btn");
 const replayBtn = document.querySelector("#replay-btn");
 const controlButtons = document.querySelectorAll("[data-dir]");
 const deathOverlayEl = document.querySelector("#death-overlay");
+const wallToggleEl = document.querySelector("#wall-toggle");
 
 let state = createInitialState({ rows: ROWS, cols: COLS });
 const cells = [];
@@ -104,8 +105,12 @@ function render() {
   document.body.classList.toggle("death-active", isDead);
 }
 
+function getWallMode() {
+  return wallToggleEl.checked ? "deadly" : "teleport";
+}
+
 function resetGame() {
-  state = createInitialState({ rows: ROWS, cols: COLS });
+  state = createInitialState({ rows: ROWS, cols: COLS, wallMode: getWallMode() });
   render();
 }
 
@@ -162,3 +167,7 @@ for (const button of controlButtons) {
     render();
   });
 }
+
+wallToggleEl.addEventListener("change", () => {
+  state = { ...state, wallMode: getWallMode() };
+});
